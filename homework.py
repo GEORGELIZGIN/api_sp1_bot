@@ -48,7 +48,6 @@ def main():
     logging.debug('Бот успешно запущен')
     bot = telegram.Bot(token=TELEGRAM_TOKEN)
     current_timestamp = int(time.time())
-    current_timestamp = 0
 
     while True:
         try:
