@@ -22,19 +22,14 @@ def parse_homework_status(homework):
     homework_name = homework.get('homework_name')
     STATUSES = {
         'approved': (
-            f'У вас проверили работу "{homework_name}"!'
-            '\n\nРевьюеру всё понравилось, '
+            'Ревьюеру всё понравилось, '
             'можно приступать к следующему уроку.'),
         'rejected': (
             'К сожалению в работе нашлись ошибки.'),
-        'reviewing': (
-            'работа взята в ревью'),
     }
     status = homework.get('status')
-    if status not in STATUSES:
-        logging.info(f'Неизвестный статус работы: {status}')
-        return f'Неизвестный статус работы: {status}'
-    return STATUSES.get(status)
+    verdict = STATUSES.get(status, 'Неизвестный статус работы')
+    return f'У вас проверили работу "{homework_name}"!\n\n{verdict}'
 
 
 def get_homework_statuses(current_timestamp):
