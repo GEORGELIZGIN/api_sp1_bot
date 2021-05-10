@@ -22,8 +22,9 @@ def parse_homework_status(homework):
     homework_name = homework.get('homework_name')
     STATUSES = {
         'approved': (
-            f'У вас проверили работу "{homework_name}"!
-            \n\nРевьюеру всё понравилось, можно приступать к следующему уроку.'),
+            f'У вас проверили работу "{homework_name}"!'
+            '\n\nРевьюеру всё понравилось, '
+            'можно приступать к следующему уроку.'),
         'rejected': (
             'К сожалению в работе нашлись ошибки.'),
         'reviewing': (
@@ -70,9 +71,7 @@ def main():
                     parse_homework_status(new_homework.get('homeworks')[0]),
                     bot)
                 logging.info('Сообщение успешно отправлено')
-            current_timestamp = new_homework.get(
-                'current_date',
-                None or current_timestamp)
+            current_timestamp = new_homework.get('current_date')
             time.sleep(300)
 
         except Exception as e:
